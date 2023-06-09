@@ -24,13 +24,19 @@ public class Form {
     //Declaracion cajas de texto para tomar datos;
     private JTextField nameTextField;
     private JTextField lastNameTextField;
-    private JTextField  phoneTextField;
-    private JTextField  emailTextField;
+    private JTextField phoneTextField;
+    private JTextField emailTextField;
 
     //Declaracion botones;
     private JButton saveButton;
     private JButton deleteButton;
 
+    void borrarDatos(){
+        nameTextField.setText(" ");
+        lastNameTextField.setText(" ");
+        emailTextField.setText(" ");
+        phoneTextField.setText(" ");
+    }
     
     private static DefaultListModel<String> lista = new DefaultListModel<String>();
 
@@ -103,6 +109,7 @@ public class Form {
             usuario.setEmail(this.emailTextField.getText());
             usuario.setPhone(this.phoneTextField.getText());
             lista.addElement(usuario.getName());
+            borrarDatos();
         });
         panel.add(saveButton);
 
@@ -115,5 +122,7 @@ public class Form {
         });
         panel.add(deleteButton);
     }
+
+    
 }
 
