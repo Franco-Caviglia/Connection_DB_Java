@@ -1,7 +1,13 @@
 package App;
 
-public class App {
-    public static void main(String[] args) throws Exception {
+
+import Form.Form;
+
+
+public class App{
+    public static void main(String[] args){
+        Form ventana = new Form();
+        ventana.formulario();
         
-    }
+}
 }

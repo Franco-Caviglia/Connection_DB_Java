@@ -1,6 +1,6 @@
-package Cliente;
+package DatosCliente;
 
-public class Cliente {
+public class Cliente{
     
     //Generamos variables que utilizaremos tambien en nuestra BD;
     private String name;
