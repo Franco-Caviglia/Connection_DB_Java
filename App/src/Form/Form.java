@@ -13,9 +13,25 @@ import javax.swing.JPanel;
 
 
 public class Form {
-    private JButton saveButton;
+    //Declaracion labels para los campos;
+    
     private JLabel nameLabel;
+    private JLabel lastNameLabel;
+    private JLabel phoneLabel;
+    private JLabel emailLabel;
+    
+
+    //Declaracion cajas de texto para tomar datos;
     private JTextField nameTextField;
+    private JTextField lastNameTextField;
+    private JTextField  phoneTextField;
+    private JTextField  emailTextField;
+
+    //Declaracion botones;
+    private JButton saveButton;
+    private JButton deleteButton;
+
+    
     private static DefaultListModel<String> lista = new DefaultListModel<String>();
 
     public void formulario(){
@@ -31,14 +47,46 @@ public class Form {
         frame.add(panel);
         
         //Labels;
+        //Nombre;
         nameLabel = new JLabel("Nombre");
         nameLabel.setBounds(40, 20, 80, 20);
         panel.add(nameLabel);
 
+        //Apellido;
+        lastNameLabel = new JLabel("Apellido");
+        lastNameLabel.setBounds(40, 50, 80, 20);
+        panel.add(lastNameLabel);
+
+        //Telefono;
+        phoneLabel = new JLabel("Telefono");
+        phoneLabel.setBounds(40, 80, 80, 20);
+        panel.add(phoneLabel);
+
+        //Email;
+        emailLabel = new JLabel("Email");
+        emailLabel.setBounds(40, 110, 80, 20);
+        panel.add(emailLabel);
+
         //TxtField;
+        //NombreTxtField;
         nameTextField = new JTextField();
         nameTextField.setBounds(105, 20, 80, 20);
         panel.add(nameTextField);
+
+        //ApellidoTxtField;
+        lastNameTextField = new JTextField();
+        lastNameTextField.setBounds(105, 50, 80, 20);
+        panel.add(lastNameTextField);
+
+        //TelefonoTxtField;
+        phoneTextField = new JTextField();
+        phoneTextField.setBounds(105, 80, 80, 20);
+        panel.add(phoneTextField);
+
+        //EmailTxtField;
+        emailTextField = new JTextField();
+        emailTextField.setBounds(105, 110, 80, 20);
+        panel.add(emailTextField);
 
         //List;
         JList<String> listaUsuarios = new JList<String>(lista);
@@ -49,19 +97,23 @@ public class Form {
         saveButton = new JButton("Guardar");
         saveButton.setBounds(65, 140, 80, 20);
         saveButton.addActionListener(e -> {
-            Cliente nameUser = new Cliente();
-            nameUser.setName(this.nameTextField.getText());
-            lista.addElement(nameUser.getName());
+            Cliente usuario = new Cliente();
+            usuario.setName(this.nameTextField.getText());
+            usuario.setLastName(this.lastNameTextField.getText());
+            usuario.setEmail(this.emailTextField.getText());
+            usuario.setPhone(this.phoneTextField.getText());
+            lista.addElement(usuario.getName());
         });
         panel.add(saveButton);
-        
-        
+
+        //Boton borrar;
+        deleteButton = new JButton("Eliminar");
+        deleteButton.setBounds(210, 140, 80, 20);
+        deleteButton.addActionListener(e -> {
+            int indice = listaUsuarios.getSelectedIndex();
+            lista.remove(indice);
+        });
+        panel.add(deleteButton);
     }
-
-    public void setVisible(boolean b) {
-
-    }
-    
-
-
 }
+
