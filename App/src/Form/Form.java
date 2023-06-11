@@ -5,6 +5,9 @@ import DatosCliente.Cliente;
 //importamos libreria para crear nuestra UI;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+
+import DAO.ClienteDAO;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
@@ -30,6 +33,8 @@ public class Form {
     //Declaracion botones;
     private JButton saveButton;
     private JButton deleteButton;
+    //Boton prueba de conexion;
+    private JButton conectarButton;
 
     void borrarDatos(){
         nameTextField.setText(" ");
@@ -121,6 +126,15 @@ public class Form {
             lista.remove(indice);
         });
         panel.add(deleteButton);
+
+        //boton prueba conex;
+        conectarButton = new JButton("Conectar");
+        conectarButton.setBounds(300, 140, 100, 20);
+        conectarButton.addActionListener(e -> {
+            ClienteDAO dao = new ClienteDAO();
+            dao.conectar();
+        });
+        panel.add(conectarButton);
     }
 
     
